@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>ajax page</title>
+</head>
+<body>
+<span>
+<button onclick="ajaxclick()">Click me to change the text</button>
+<p id="p1"></p>
+</span>
+<script>
+
+function ajaxclick()
+{
+var xmlhttp;
+if(window.XMLHttpRequest)
+{
+	xmlhttp=new XMLHttpRequest();
+}
+else
+{
+	xmlhttp=new ActivXObject("Microsoft.XMLHTTP");
+}
+
+xmlhttp.onreadystatechange=function()
+{
+	if(xmlhttp.readyState==4&&xmlhttp.status==200)
+	{
+	
+		document.getElementById("p1").innerHTML=xmlhttp.responseText;
+	}
+}
+xmlhttp.open("GET","ajax_info.txt",true);
+xmlhttp.send();
+}
+</script>
+
+</body>
+</html>
